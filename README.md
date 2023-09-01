@@ -92,6 +92,9 @@ postgresql_service_enabled: false # should the service be enabled, default is tr
 postgresql_cluster_name: "main"
 postgresql_cluster_reset: false
 
+postgresql_log_directory_group: "{{ postgresql_service_group }}" # group of the `postgresql_log_directory`.
+postgresql_log_directory_mode: 0700 # permissions of the `postgresql_log_directory`.
+
 # List of databases to be created (optional)
 # Note: for more flexibility with extensions use the postgresql_database_extensions setting.
 postgresql_databases:
