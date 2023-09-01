@@ -29,6 +29,7 @@ postgresql_service_user: "{{ postgresql_admin_user }}"
 postgresql_service_user_pgsql_profile: false
 postgresql_service_group: "{{ postgresql_admin_user }}"
 postgresql_service_enabled: true
+postgresql_service_restarted_state: "reloaded"
 
 postgresql_cluster_name: "main"
 postgresql_cluster_reset: false
