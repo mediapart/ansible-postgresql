@@ -29,6 +29,7 @@ postgresql_service_user: "{{ postgresql_admin_user }}"
 postgresql_service_user_pgsql_profile: false
 postgresql_service_group: "{{ postgresql_admin_user }}"
 postgresql_service_enabled: true
+postgresql_service_restarted_state: "reloaded"
 
 postgresql_cluster_name: "main"
 postgresql_cluster_reset: false
@@ -475,6 +476,10 @@ postgresql_logging_collector:          off
 # These are only used if logging_collector is on:
 # Directory where log files are written, can be absolute or relative to PGDATA
 postgresql_log_directory:              "pg_log"
+# Group of the `postgresql_log_directory.
+postgresql_log_directory_group: "{{ postgresql_service_group }}"
+# permissions of the `postgresql_log_directory`.
+postgresql_log_directory_mode: 0700
 # Log file name pattern, can include strftime() escapes
 postgresql_log_filename:               "postgresql-%Y-%m-%d_%H%M%S.log"
 postgresql_log_file_mode:              "0600" # begin with 0 to use octal notation

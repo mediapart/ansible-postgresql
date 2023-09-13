@@ -88,9 +88,13 @@ postgresql_admin_user: "postgres"
 postgresql_default_auth_method: "peer"
 
 postgresql_service_enabled: false # should the service be enabled, default is true
+postgresql_service_restarted_state: "reloaded" # state of the service after configuration changes (e.g. restarted, reloaded).
 
 postgresql_cluster_name: "main"
 postgresql_cluster_reset: false
+
+postgresql_log_directory_group: "{{ postgresql_service_group }}" # group of the `postgresql_log_directory`.
+postgresql_log_directory_mode: 0700 # permissions of the `postgresql_log_directory`.
 
 # List of databases to be created (optional)
 # Note: for more flexibility with extensions use the postgresql_database_extensions setting.
@@ -101,7 +105,6 @@ postgresql_databases:
     uuid_ossp: yes      # flag to install the uuid-ossp extension on this database (yes/no)
     citext: yes         # flag to install the citext extension on this database (yes/no)
     encoding: "UTF-8"   # override global {{ postgresql_encoding }} variable per database
-    state: "present"    # optional; one of 'present', 'absent', 'dump', 'restore'
     lc_collate: "en_GB.UTF-8"   # override global {{ postgresql_locale }} variable per database
     lc_ctype: "en_GB.UTF-8"     # override global {{ postgresql_ctype }} variable per database
 
@@ -117,25 +120,24 @@ postgresql_users:
   - name: baz
     pass: pass
     encrypted: yes  # if password should be encrypted, postgresql >= 10 does only accepts encrypted passwords
-    state: "present"    # optional; one of 'present', 'absent'
 
 # List of schemas to be created (optional)
 postgresql_database_schemas:
   - database: foobar           # database name
     schema: acme               # schema name
-    state: present
 
   - database: foobar           # database name
     schema: acme_baz           # schema name
     owner: baz                 # owner name
-    state: present
 
 # List of user privileges to be applied (optional)
 postgresql_user_privileges:
-  - name: baz                   # user name
-    db: foobar                  # database
-    priv: "ALL"                 # privilege string format: example: INSERT,UPDATE/table:SELECT/anothertable:ALL
-    role_attr_flags: "CREATEDB" # role attribute flags
+  - roles: baz                  # comma separated list of role (user/group) names to set permissions for.
+    database: foobar            # name of database to connect to.
+    schema: acme_baz            # schema that contains the database objects specified via objs (see documentation for details).
+    type: table                 # type of database object to set privileges on. e.g.: table (default), sequence, function,... (see documentation for details)
+    objs: employee              # comma separated list of database objects to set privileges on (see documentation for details).
+    privs: "ALL"                # comma separated list of privileges to grant. e.g.: INSERT,UPDATE/ALL/USAGE
 ```
 
 There's a lot more knobs and bolts to set, which you can find in the [defaults/main.yml](./defaults/main.yml)
