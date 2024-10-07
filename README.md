@@ -115,6 +115,7 @@ postgresql_users:
   - name: baz
     pass: pass
     encrypted: yes  # if password should be encrypted, postgresql >= 10 does only accepts encrypted passwords
+    role_attr_flags: "login" # comma separated list of role attributes ([no]superuser,[no]createrole,[no]createdb,[no]inherit,[no]login,[no]replication,[no]bypassrls,)
 
 # List of schemas to be created (optional)
 postgresql_database_schemas:
