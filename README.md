@@ -54,14 +54,14 @@ An example how to include this role as a task:
 
 #### Compatibility matrix
 
-| Distribution / PostgreSQL |     11     |         12         |         13         |         14         |         15         |       16        |
-| ------------------------- | :--------: | :----------------: | :----------------: | :----------------: | :----------------: | :-------------: |
-| Debian 11.x               | :no_entry: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| Debian 12.x               | :no_entry: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| Rockylinux 8.x            | :no_entry: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| Rockylinux 9.x            | :no_entry: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| Ubuntu 20.04.x            | :no_entry: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| Ubuntu 22.04.x            | :no_entry: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Distribution / PostgreSQL |     11     |         12         |         13         |         14         |         15         |         16         |         17         |
+| ------------------------- | :--------: | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: |
+| Debian 11.x               | :no_entry: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |    :interrobang:   |
+| Debian 12.x               | :no_entry: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |    :interrobang:   |
+| Rockylinux 8.x            | :no_entry: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |    :interrobang:   |
+| Rockylinux 9.x            | :no_entry: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |    :interrobang:   |
+| Ubuntu 20.04.x            | :no_entry: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |    :interrobang:   |
+| Ubuntu 22.04.x            | :no_entry: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |    :interrobang:   |
 
 
 - :white_check_mark: - tested, works fine
@@ -75,7 +75,7 @@ An example how to include this role as a task:
 
 ```yaml
 # Basic settings
-postgresql_version: 16
+postgresql_version: 17
 postgresql_encoding: "UTF-8"
 postgresql_locale: "en_US.UTF-8"
 postgresql_ctype: "en_US.UTF-8"
